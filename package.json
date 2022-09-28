@@ -1,0 +1,35 @@
+{
+  "name": "sentidinho",
+  "version": "1.0.0",
+  "private": "true",
+  "workspaces": [
+    "api",
+    "app"
+  ],
+  "description": "Aplicación de notas con parte backend y parte frontend en monorepo",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "npm run dev --workspace=api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/franjsb1903/sentidinho.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/franjsb1903/sentidinho/issues"
+  },
+  "homepage": "https://github.com/franjsb1903/sentidinho#readme",
+  "devDependencies": {
+    "eslint": "8.22.0",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-standard-with-typescript": "22.0.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-n": "15.2.5",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.7.1",
+    "eslint-plugin-promise": "6.0.0"
+  }
+}
