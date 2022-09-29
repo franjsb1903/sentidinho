@@ -1,7 +1,7 @@
-const { getAll } = require('../../db/notasDB')
+const notasDBQueries = require('../../db/notasDB')
 
 const getAllNotas = () => {
-  return getAll()
+  return notasDBQueries.getAll()
 }
 
 module.exports = {

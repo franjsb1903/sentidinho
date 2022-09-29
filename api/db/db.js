@@ -17,7 +17,7 @@ const query = (command, params = [], method = 'all') => {
 
 db.serialize(async () => {
   await query(
-    'CREATE TABLE IF NOT EXISTS notas (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, date TEXT)',
+    'CREATE TABLE IF NOT EXISTS notas (id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT, content TEXT, date TEXT, important BOOLEAN, deleted BOOLEAN)',
     [],
     'run'
   )
