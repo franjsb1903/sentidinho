@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import './styles.css'
 
 const Container = styled.header`
-  color: #ffffff;
+  color: ${({ theme }) => theme.text};
 `
 
 const Nav = styled.nav`
@@ -41,7 +41,7 @@ const Item = styled.li`
 `
 
 const Link = styled.a`
-  color: #fff;
+  color: ${({ theme }) => theme.text};
   text-decoration: none;
   font-size: 1.2rem;
   letter-spacing: 2px;

@@ -9,7 +9,8 @@
   "description": "Aplicación de notas con parte backend y parte frontend en monorepo",
   "main": "index.js",
   "scripts": {
-    "dev:server": "npm run dev --workspace=api"
+    "dev:api": "npm run dev -w api",
+    "dev:app": "npm run dev -w app"
   },
   "repository": {
     "type": "git",
