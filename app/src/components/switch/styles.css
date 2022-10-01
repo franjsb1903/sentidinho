@@ -1,0 +1,32 @@
+#switch .content:before {
+  content: 'SI';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 20px;
+  height: 10px;
+  color: #fff;
+  font-size: 10px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  padding: 9px 4px;
+  background-color: #03a9f4;
+  border-radius: 50%;
+  transition: 0.3s ease all;
+}
+
+#switch .checkbox:active + .content:before {
+  width: 46px;
+  border-radius: 100px;
+}
+
+#switch .checkbox:checked:active + .content:before {
+  margin-left: -26px;
+}
+
+#switch .checkbox:checked + .content:before {
+  content: 'NO';
+  left: 42px;
+  background-color: #f44336;
+}
