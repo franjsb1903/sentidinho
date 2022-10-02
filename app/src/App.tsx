@@ -1,9 +1,8 @@
 import { ThemeProvider } from 'styled-components'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { GlobalStyle, darkTheme, lightTheme } from './styles/GlobalStyles'
+import RoutesApp from './routes/Routes'
 import Header from './components/header/Header'
-import NotesList from './components/notesList/NotesList'
 import { store } from './redux/store'
 
 function App() {
@@ -11,12 +10,7 @@ function App() {
     <Provider store={store}>
       <ThemeProvider theme={darkTheme}>
         <GlobalStyle />
-        <Header />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<NotesList />} />
-          </Routes>
-        </BrowserRouter>
+        <RoutesApp />
       </ThemeProvider>
     </Provider>
   )

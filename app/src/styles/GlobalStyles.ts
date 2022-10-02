@@ -24,6 +24,8 @@ export const GlobalStyle = createGlobalStyle`
     background-size: cover;
     min-height: 500px;
     height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
   }
 
   @font-face {

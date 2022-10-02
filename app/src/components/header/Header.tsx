@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import './styles.css'
 
 const Container = styled.header`
@@ -20,9 +21,9 @@ const Nav = styled.nav`
 
 const Logo = styled.h2`
   font-size: 2.5rem;
-  z-index: 1;
   font-family: 'Dancing';
   margin-left: 3px;
+  z-index: 2;
 `
 
 const NavIconContainer = styled.a`
@@ -30,6 +31,7 @@ const NavIconContainer = styled.a`
   grid-column: -2/-1;
   grid-row: 1/2;
   transition: 0.4s transform;
+  z-index: 1;
 `
 
 const NavIcon = styled.img`
@@ -40,7 +42,7 @@ const Item = styled.li`
   list-style: none;
 `
 
-const Link = styled.a`
+const LinkHeader = styled(Link)`
   color: ${({ theme }) => theme.text};
   text-decoration: none;
   font-size: 1.2rem;
@@ -55,24 +57,24 @@ const Header = () => {
 
         <ul className="nav__links">
           <Item>
-            <Link href="#" className="nav__link">
+            <LinkHeader to="/" className="nav__link">
               Todas
-            </Link>
+            </LinkHeader>
           </Item>
           <Item>
-            <Link href="#" className="nav__link">
+            <LinkHeader to="/no-important" className="nav__link">
               No importantes
-            </Link>
+            </LinkHeader>
           </Item>
           <Item>
-            <Link href="#" className="nav__link">
+            <LinkHeader to="#" className="nav__link">
               Importantes
-            </Link>
+            </LinkHeader>
           </Item>
           <Item>
-            <Link href="#" className="nav__link">
+            <LinkHeader to="#" className="nav__link">
               Borradas
-            </Link>
+            </LinkHeader>
           </Item>
         </ul>
 

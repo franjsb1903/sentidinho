@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import Button from '../button/Button'
 import { INote } from '../../types/INote'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.body};
-  height: 320px;
+  height: 400px;
   width: 400px;
   border-radius: 10%;
   overflow: hidden;
@@ -19,17 +20,13 @@ const Row = styled.div`
   align-content: center;
   align-self: center;
   width: 100%;
+  padding: 10px;
 `
 
 const Col6 = styled.div`
   width: 50%;
   display: flex;
   justify-content: center;
-`
-
-const Text = styled.p`
-  font-size: 1rem;
-  color: ${({ theme }) => theme.text};
 `
 
 const Divider = styled.div`
@@ -43,8 +40,8 @@ const Title = styled.h2`
 
 const ContentContainer = styled.div`
   padding: 1rem;
-  min-height: 200px;
-  max-height: 200px;
+  min-height: 250px;
+  max-height: 250px;
   overflow: auto;
 `
 
@@ -62,10 +59,14 @@ const NoteCard = ({ note }: { note: INote }) => {
       </ContentContainer>
       <Row>
         <Col6>
-          <Text>{note.important ? 'No es importante' : 'Es importante'}</Text>
+          <Button bgcolor="#5799db">
+            {note.important ? 'Deshacer importante' : 'Hacer importante'}
+          </Button>
         </Col6>
         <Col6>
-          <Text>{note.deleted ? 'Recuperar' : 'Eliminar'}</Text>
+          <Button bgcolor="#d94a26">
+            {note.deleted ? 'Recuperar' : 'Eliminar'}
+          </Button>
         </Col6>
       </Row>
     </Container>

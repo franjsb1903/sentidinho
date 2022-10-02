@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { useGetAllNotesQuery } from '../../redux/slices/notesAPI'
+import { INote } from '../../types/INote'
 import NoteCard from '../noteCard/NoteCard'
 
 const Container = styled.div`
@@ -19,16 +20,21 @@ const ListContainer = styled.div`
   width: 90%;
   justify-content: flex-start;
   gap: 10px 20px;
+  margin-bottom: 100px;
 `
 
-const NotesList = () => {
-  const { data, isLoading } = useGetAllNotesQuery()
-  console.log({ data })
+const NotesList = ({
+  isLoading,
+  data,
+}: {
+  isLoading: boolean
+  data: INote[] | undefined
+}) => {
   return (
     <Container>
       <ListContainer>
         {!isLoading &&
-          data?.notes.map(note => <NoteCard note={note} key={note.id} />)}
+          data?.map(note => <NoteCard note={note} key={note.id} />)}
       </ListContainer>
     </Container>
   )

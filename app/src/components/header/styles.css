@@ -33,6 +33,7 @@
   padding-left: 5%;
   transform: var(--state-menu);
   transition: 0.3s transform;
+  z-index: 1;
 }
 
 @media (min-width: 768px) {
