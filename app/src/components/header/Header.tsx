@@ -67,12 +67,12 @@ const Header = () => {
             </LinkHeader>
           </Item>
           <Item>
-            <LinkHeader to="#" className="nav__link">
+            <LinkHeader to="/important" className="nav__link">
               Importantes
             </LinkHeader>
           </Item>
           <Item>
-            <LinkHeader to="#" className="nav__link">
+            <LinkHeader to="/deleted" className="nav__link">
               Borradas
             </LinkHeader>
           </Item>

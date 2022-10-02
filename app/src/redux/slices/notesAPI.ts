@@ -11,17 +11,36 @@ export const notesApi = createApi({
   endpoints: builder => ({
     getAllNotes: builder.query<{ notes: INote[] }, void>({
       query: () => import.meta.env.VITE_GET_ALL_NOTES_PATH,
-      providesTags: ['Post' as never],
+      providesTags: ['note-mutation' as never],
     }),
-    postNewNote: builder.mutation<INote, Partial<INote>>({
+    postNewNote: builder.mutation<{}, Partial<INote>>({
       query: body => ({
         url: import.meta.env.VITE_CREATE_NEW_NOTE_PATH,
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Post' as never],
+      invalidatesTags: ['note-mutation' as never],
+    }),
+    putChangeImportance: builder.mutation<{}, number>({
+      query: id => ({
+        url: `${import.meta.env.VITE_PUT_IMPORTANCE_PATH}/${id}`,
+        method: 'PUT',
+      }),
+      invalidatesTags: ['note-mutation' as never],
+    }),
+    deleteNote: builder.mutation<{}, number>({
+      query: id => ({
+        url: `${import.meta.env.VITE_DELETE_NOTE_PATH}/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['note-mutation' as never],
     }),
   }),
 })
 
-export const { useGetAllNotesQuery, usePostNewNoteMutation } = notesApi
+export const {
+  useGetAllNotesQuery,
+  usePostNewNoteMutation,
+  usePutChangeImportanceMutation,
+  useDeleteNoteMutation,
+} = notesApi

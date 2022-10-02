@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { useGetAllNotesQuery } from '../../redux/slices/notesAPI'
 import { INote } from '../../types/INote'
 import NoteCard from '../noteCard/NoteCard'
 
@@ -23,6 +22,24 @@ const ListContainer = styled.div`
   margin-bottom: 100px;
 `
 
+const NoDataContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 300px;
+  align-items: center;
+`
+
+const NoData = styled.h1`
+  color: ${({ theme }) => theme.text};
+`
+
+const ShowNoData = () => (
+  <NoDataContainer>
+    <NoData>No hay notas que mostrar</NoData>
+  </NoDataContainer>
+)
+
 const NotesList = ({
   isLoading,
   data,
@@ -33,8 +50,17 @@ const NotesList = ({
   return (
     <Container>
       <ListContainer>
-        {!isLoading &&
-          data?.map(note => <NoteCard note={note} key={note.id} />)}
+        {isLoading ? (
+          <h2>Cargando...</h2>
+        ) : data ? (
+          data.length > 0 ? (
+            data?.map(note => <NoteCard note={note} key={note.id} />)
+          ) : (
+            <ShowNoData />
+          )
+        ) : (
+          <ShowNoData />
+        )}
       </ListContainer>
     </Container>
   )

@@ -17,7 +17,27 @@ const RoutesApp = () => {
           path="/no-important"
           element={
             <NotesList
-              data={data?.notes.filter(note => !note.important)}
+              data={data?.notes.filter(
+                note => !note.important && !note.deleted
+              )}
+              isLoading={isLoading}
+            />
+          }
+        />
+        <Route
+          path="/important"
+          element={
+            <NotesList
+              data={data?.notes.filter(note => note.important && !note.deleted)}
+              isLoading={isLoading}
+            />
+          }
+        />
+        <Route
+          path="/deleted"
+          element={
+            <NotesList
+              data={data?.notes.filter(note => note.deleted)}
               isLoading={isLoading}
             />
           }

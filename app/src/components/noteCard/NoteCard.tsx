@@ -1,6 +1,11 @@
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 import Button from '../button/Button'
 import { INote } from '../../types/INote'
+import {
+  usePutChangeImportanceMutation,
+  useDeleteNoteMutation,
+} from '../../redux/slices/notesAPI'
 
 const Container = styled.div`
   display: flex;
@@ -36,6 +41,8 @@ const Divider = styled.div`
 const Title = styled.h2`
   color: ${({ theme }) => theme.text};
   padding: 0.3rem;
+  text-decoration: ${({ deleted }: { deleted: boolean }) =>
+    deleted ? 'line-through' : 'none'};
 `
 
 const ContentContainer = styled.div`
@@ -50,21 +57,47 @@ const Content = styled.p`
 `
 
 const NoteCard = ({ note }: { note: INote }) => {
+  const [changeImportance] = usePutChangeImportanceMutation()
+  const [deleteNote] = useDeleteNoteMutation()
+  const navigate = useNavigate()
+
+  const onChangeImportance = () => {
+    changeImportance(note.id)
+    navigate(
+      note.deleted
+        ? '/deleted'
+        : note.important
+        ? '/no-important'
+        : '/important'
+    )
+  }
+
+  const onDelete = () => {
+    deleteNote(note.id)
+    navigate(
+      note.deleted
+        ? note.important
+          ? '/important'
+          : '/no-important'
+        : '/deleted'
+    )
+  }
+
   return (
     <Container>
-      <Title>{note.title}</Title>
+      <Title deleted={note.deleted}>{note.title}</Title>
       <Divider />
       <ContentContainer>
         <Content>{note.content}</Content>
       </ContentContainer>
       <Row>
         <Col6>
-          <Button bgcolor="#5799db">
-            {note.important ? 'Deshacer importante' : 'Hacer importante'}
+          <Button bgcolor="#5799db" onClick={onChangeImportance}>
+            {note.important ? 'No importante' : 'Marcar importante'}
           </Button>
         </Col6>
         <Col6>
-          <Button bgcolor="#d94a26">
+          <Button bgcolor="#d94a26" onClick={onDelete}>
             {note.deleted ? 'Recuperar' : 'Eliminar'}
           </Button>
         </Col6>

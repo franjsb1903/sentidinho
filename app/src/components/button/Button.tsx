@@ -6,7 +6,7 @@ const Button = styled.button`
   background-color: ${({ bgcolor }: { bgcolor: string }) => bgcolor};
   color: white;
   cursor: pointer;
-  width: 130px;
+  width: 140px;
   opacity: 0.6;
   transition: 0.3s;
 
