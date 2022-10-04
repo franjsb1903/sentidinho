@@ -119,6 +119,7 @@ const NoteCard = ({ note }: { note: INote }) => {
             bgcolor="#5799db"
             bradius="10px"
             width="70px"
+            height="40px"
             onClick={onChangeImportance}
           >
             {note.important ? (
@@ -133,6 +134,7 @@ const NoteCard = ({ note }: { note: INote }) => {
             bgcolor={note.deleted ? 'green' : '#d94a26'}
             bradius="10px"
             width="70px"
+            height="40px"
             onClick={onDelete}
           >
             {note.deleted ? (
