@@ -1,5 +1,12 @@
 import styled from 'styled-components'
 import { useNavigate } from 'react-router-dom'
+import {
+  TbExclamationMark,
+  TbExclamationMarkOff,
+  TbTrashOff,
+  TbTrash,
+} from 'react-icons/tb'
+import moment from 'moment'
 import Button from '../button/Button'
 import { INote } from '../../types/INote'
 import {
@@ -10,10 +17,10 @@ import {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.body};
+  background-color: ${({ theme }) => theme.card};
   height: 400px;
-  width: 400px;
-  border-radius: 10%;
+  width: 350px;
+  border-radius: 20px;
   overflow: hidden;
   padding: 2rem;
 `
@@ -35,11 +42,11 @@ const Col6 = styled.div`
 `
 
 const Divider = styled.div`
-  border-bottom: 1px solid ${({ theme }) => theme.textTrans};
+  border-bottom: 1px solid ${({ theme }) => theme.cardDivider};
 `
 
 const Title = styled.h2`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.textCard};
   padding: 0.3rem;
   text-decoration: ${({ deleted }: { deleted: boolean }) =>
     deleted ? 'line-through' : 'none'};
@@ -53,7 +60,17 @@ const ContentContainer = styled.div`
 `
 
 const Content = styled.p`
-  color: ${({ theme }) => theme.text};
+  color: ${({ theme }) => theme.textCard};
+`
+
+const DateContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
+
+const Date = styled.p`
+  color: ${({ theme }) => theme.textCard};
+  font-size: 0.7rem;
 `
 
 const NoteCard = ({ note }: { note: INote }) => {
@@ -87,18 +104,42 @@ const NoteCard = ({ note }: { note: INote }) => {
     <Container>
       <Title deleted={note.deleted}>{note.title}</Title>
       <Divider />
+      <DateContainer>
+        <Date>
+          <strong>{moment(note.date).format('DD/MM/YYYY')}</strong>
+        </Date>
+      </DateContainer>
       <ContentContainer>
         <Content>{note.content}</Content>
       </ContentContainer>
+      <Divider />
       <Row>
         <Col6>
-          <Button bgcolor="#5799db" onClick={onChangeImportance}>
-            {note.important ? 'No importante' : 'Marcar importante'}
+          <Button
+            bgcolor="#5799db"
+            bradius="10px"
+            width="70px"
+            onClick={onChangeImportance}
+          >
+            {note.important ? (
+              <TbExclamationMarkOff size={'1.2rem'} fontWeight="bold" />
+            ) : (
+              <TbExclamationMark size={'1.2rem'} fontWeight="bold" />
+            )}
           </Button>
         </Col6>
         <Col6>
-          <Button bgcolor="#d94a26" onClick={onDelete}>
-            {note.deleted ? 'Recuperar' : 'Eliminar'}
+          <Button
+            bgcolor={note.deleted ? 'green' : '#d94a26'}
+            bradius="10px"
+            width="70px"
+            onClick={onDelete}
+          >
+            {note.deleted ? (
+              <TbTrashOff size="1rem" />
+            ) : (
+              <TbTrash size={'1rem'} />
+            )}
           </Button>
         </Col6>
       </Row>

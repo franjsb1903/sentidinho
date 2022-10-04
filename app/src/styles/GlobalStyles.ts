@@ -3,12 +3,17 @@ import { createGlobalStyle } from 'styled-components'
 export const lightTheme = {
   body: '#fff',
   text: '#000',
+  cardDivider: 'rgba(255, 255, 255, 0.5)',
+  card: '#000',
+  textCard: '#fff',
 }
 
 export const darkTheme = {
   body: '#000',
   text: '#fff',
-  textTrans: 'rgba(255, 255, 255, 0.5)',
+  cardDivider: 'rgba(0, 0, 0, 0.5)',
+  card: 'rgba(255, 255, 255, 0.8)',
+  textCard: '#000',
 }
 
 export const GlobalStyle = createGlobalStyle`

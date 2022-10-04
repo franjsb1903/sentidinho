@@ -4,8 +4,6 @@ import NoteCard from '../noteCard/NoteCard'
 
 const Container = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   width: 100%;
   max-height: 90vh;
   overflow: auto;
@@ -17,8 +15,8 @@ const ListContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   width: 90%;
-  justify-content: flex-start;
-  gap: 10px 20px;
+  justify-content: center;
+  gap: 50px;
   margin-bottom: 100px;
 `
 

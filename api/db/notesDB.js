@@ -2,7 +2,7 @@ const { query } = require('./db')
 
 const notesDBQueries = {
   getAll() {
-    return query('SELECT * FROM notes')
+    return query('SELECT * FROM notes ORDER BY date DESC')
   },
   getNoteById(id) {
     return query('select * from notes where id = ?', [id], 'get')

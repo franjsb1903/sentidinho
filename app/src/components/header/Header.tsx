@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import './styles.css'
 
 const Container = styled.header`
@@ -50,6 +51,7 @@ const LinkHeader = styled(Link)`
 `
 
 const Header = () => {
+  const location = useLocation()
   return (
     <Container>
       <Nav className="nav" id="nav">
@@ -57,22 +59,42 @@ const Header = () => {
 
         <ul className="nav__links">
           <Item>
-            <LinkHeader to="/" className="nav__link">
+            <LinkHeader
+              to="/"
+              className={`nav__link ${
+                location.pathname === '/' ? 'active' : ''
+              }`}
+            >
               Todas
             </LinkHeader>
           </Item>
           <Item>
-            <LinkHeader to="/no-important" className="nav__link">
+            <LinkHeader
+              to="/no-important"
+              className={`nav__link ${
+                location.pathname === '/no-important' ? 'active' : ''
+              }`}
+            >
               No importantes
             </LinkHeader>
           </Item>
           <Item>
-            <LinkHeader to="/important" className="nav__link">
+            <LinkHeader
+              to="/important"
+              className={`nav__link ${
+                location.pathname === '/important' ? 'active' : ''
+              }`}
+            >
               Importantes
             </LinkHeader>
           </Item>
           <Item>
-            <LinkHeader to="/deleted" className="nav__link">
+            <LinkHeader
+              to="/deleted"
+              className={`nav__link ${
+                location.pathname === '/deleted' ? 'active' : ''
+              }`}
+            >
               Borradas
             </LinkHeader>
           </Item>

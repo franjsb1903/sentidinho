@@ -1,13 +1,20 @@
 import styled from 'styled-components'
 
+interface ButtonProps {
+  bgcolor: string
+  width: string
+  bradius: string
+}
+
 const Button = styled.button`
   padding: 0.8rem;
-  border-radius: 20px;
-  background-color: ${({ bgcolor }: { bgcolor: string }) => bgcolor};
+  border: none;
+  border-radius: ${({ bradius }: ButtonProps) => bradius};
+  background-color: ${({ bgcolor }: ButtonProps) => bgcolor};
   color: white;
   cursor: pointer;
-  width: 140px;
-  opacity: 0.6;
+  width: ${({ width }: ButtonProps) => width};
+  opacity: 0.8;
   transition: 0.3s;
 
   &:hover {
