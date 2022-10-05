@@ -7,7 +7,8 @@ import {
   TbTrash,
 } from 'react-icons/tb'
 import moment from 'moment'
-import Button from '../button/Button'
+import { Row, Col6 } from '../flex/Flex'
+import { Button } from '../button/Button'
 import { INote } from '../../types/INote'
 import {
   usePutChangeImportanceMutation,
@@ -23,22 +24,6 @@ const Container = styled.div`
   border-radius: 20px;
   overflow: hidden;
   padding: 2rem;
-`
-
-const Row = styled.div`
-  display: flex;
-  flex-direction: row;
-  alignt-items: center;
-  align-content: center;
-  align-self: center;
-  width: 100%;
-  padding: 10px;
-`
-
-const Col6 = styled.div`
-  width: 50%;
-  display: flex;
-  justify-content: center;
 `
 
 const Divider = styled.div`
@@ -113,7 +98,7 @@ const NoteCard = ({ note }: { note: INote }) => {
         <Content>{note.content}</Content>
       </ContentContainer>
       <Divider />
-      <Row>
+      <Row padding="10px">
         <Col6>
           <Button
             bgcolor="#5799db"

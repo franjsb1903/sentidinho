@@ -56,6 +56,11 @@ const Header = () => {
   const location = useLocation()
 
   const theme = useContext(ThemeContext)
+
+  const closeMenu = () => {
+    const close: any = document.querySelector('.nav__close')
+    close?.click()
+  }
   return (
     <Container>
       <Nav className="nav" id="nav">
@@ -72,6 +77,7 @@ const Header = () => {
               className={`nav__link ${
                 location.pathname === '/' ? 'active' : ''
               }`}
+              onClick={closeMenu}
             >
               Todas
             </LinkHeader>
@@ -82,6 +88,7 @@ const Header = () => {
               className={`nav__link ${
                 location.pathname === '/no-important' ? 'active' : ''
               }`}
+              onClick={closeMenu}
             >
               No importantes
             </LinkHeader>
@@ -92,6 +99,7 @@ const Header = () => {
               className={`nav__link ${
                 location.pathname === '/important' ? 'active' : ''
               }`}
+              onClick={closeMenu}
             >
               Importantes
             </LinkHeader>
@@ -102,6 +110,7 @@ const Header = () => {
               className={`nav__link ${
                 location.pathname === '/deleted' ? 'active' : ''
               }`}
+              onClick={closeMenu}
             >
               Borradas
             </LinkHeader>
