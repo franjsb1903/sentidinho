@@ -34,6 +34,7 @@ const notesController = {
   async createNote(req, res) {
     try {
       const note = req.body
+      console.log({ note })
       await createNewNote(note)
       res.status(200).send({ status: 'OK' })
     } catch (error) {

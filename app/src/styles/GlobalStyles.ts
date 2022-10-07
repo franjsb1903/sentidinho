@@ -41,4 +41,17 @@ export const GlobalStyle = createGlobalStyle`
     font-family: Dancing;
     src: url('/fonts/Dancing_Script/DancingScript-VariableFont_wght.ttf');
   }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: white; 
+    border-radius: 10px;
+  }
 `

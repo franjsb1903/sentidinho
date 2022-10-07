@@ -30,7 +30,7 @@ const Divider = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.cardDivider};
 `
 
-const Title = styled.h2`
+const Title = styled.h3`
   color: ${({ theme }) => theme.textCard};
   padding: 0.3rem;
   text-decoration: ${({ deleted }: { deleted: boolean }) =>
@@ -46,6 +46,7 @@ const ContentContainer = styled.div`
 
 const Content = styled.p`
   color: ${({ theme }) => theme.textCard};
+  white-space: pre-wrap;
 `
 
 const DateContainer = styled.div`

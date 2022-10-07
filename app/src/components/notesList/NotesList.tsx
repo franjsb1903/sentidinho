@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { INote } from '../../types/INote'
 import NoteCard from '../noteCard/NoteCard'
+import Progress from '../loading/Loading'
 
 const Container = styled.div`
   display: flex;
   width: 100%;
-  max-height: 90vh;
+  max-height: 70vh;
   overflow: auto;
   justify-content: center;
 `
@@ -17,7 +18,6 @@ const ListContainer = styled.div`
   width: 90%;
   justify-content: center;
   gap: 50px;
-  margin-bottom: 100px;
 `
 
 const NoDataContainer = styled.div`
@@ -49,7 +49,7 @@ const NotesList = ({
     <Container>
       <ListContainer>
         {isLoading ? (
-          <h2>Cargando...</h2>
+          <Progress color="white" size="medium" />
         ) : data ? (
           data.length > 0 ? (
             data?.map(note => <NoteCard note={note} key={note.id} />)
