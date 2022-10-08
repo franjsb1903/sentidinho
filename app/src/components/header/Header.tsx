@@ -1,8 +1,6 @@
-import { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
-import { ThemeContext } from 'styled-components'
 import './styles.css'
 
 const Container = styled.header`
@@ -55,8 +53,6 @@ const LinkHeader = styled(Link)`
 const Header = () => {
   const location = useLocation()
 
-  const theme = useContext(ThemeContext)
-
   const closeMenu = () => {
     const close: any = document.querySelector('.nav__close')
     close?.click()
@@ -66,11 +62,7 @@ const Header = () => {
       <Nav className="nav" id="nav">
         <Logo>Sentidiño</Logo>
 
-        <ul
-          className={
-            theme.style === 'dark' ? 'nav__links__dark' : 'nav__links__light'
-          }
-        >
+        <ul className={'nav__links__dark'}>
           <Item>
             <LinkHeader
               to="/"

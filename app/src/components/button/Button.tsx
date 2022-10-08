@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 interface ButtonProps {
   bgcolor: string
+  textColor?: string
   width?: string
   height?: string
   bradius?: string
@@ -20,7 +21,7 @@ export const Button = styled.button`
   border: none;
   border-radius: ${({ bradius }: ButtonProps) => bradius || 0};
   background-color: ${({ bgcolor }: ButtonProps) => bgcolor};
-  color: white;
+  color: ${({ textColor }: ButtonProps) => textColor};
   cursor: pointer;
   width: ${({ width }: ButtonProps) => width};
   height: ${({ height }: ButtonProps) => height};

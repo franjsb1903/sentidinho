@@ -1,19 +1,7 @@
 import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
-import {
-  TbExclamationMark,
-  TbExclamationMarkOff,
-  TbTrashOff,
-  TbTrash,
-} from 'react-icons/tb'
 import moment from 'moment'
-import { Row, Col6 } from '../flex/Flex'
-import { Button } from '../button/Button'
 import { INote } from '../../types/INote'
-import {
-  usePutChangeImportanceMutation,
-  useDeleteNoteMutation,
-} from '../../redux/slices/notesAPI'
+import NoteButtons from './NoteButtons'
 
 const Container = styled.div`
   display: flex;
@@ -60,32 +48,6 @@ const Date = styled.p`
 `
 
 const NoteCard = ({ note }: { note: INote }) => {
-  const [changeImportance] = usePutChangeImportanceMutation()
-  const [deleteNote] = useDeleteNoteMutation()
-  const navigate = useNavigate()
-
-  const onChangeImportance = () => {
-    changeImportance(note.id)
-    navigate(
-      note.deleted
-        ? '/deleted'
-        : note.important
-        ? '/no-important'
-        : '/important'
-    )
-  }
-
-  const onDelete = () => {
-    deleteNote(note.id)
-    navigate(
-      note.deleted
-        ? note.important
-          ? '/important'
-          : '/no-important'
-        : '/deleted'
-    )
-  }
-
   return (
     <Container>
       <Title deleted={note.deleted}>{note.title}</Title>
@@ -99,38 +61,7 @@ const NoteCard = ({ note }: { note: INote }) => {
         <Content>{note.content}</Content>
       </ContentContainer>
       <Divider />
-      <Row padding="10px">
-        <Col6>
-          <Button
-            bgcolor="#5799db"
-            bradius="10px"
-            width="70px"
-            height="40px"
-            onClick={onChangeImportance}
-          >
-            {note.important ? (
-              <TbExclamationMarkOff size={'1.2rem'} fontWeight="bold" />
-            ) : (
-              <TbExclamationMark size={'1.2rem'} fontWeight="bold" />
-            )}
-          </Button>
-        </Col6>
-        <Col6>
-          <Button
-            bgcolor={note.deleted ? 'green' : '#d94a26'}
-            bradius="10px"
-            width="70px"
-            height="40px"
-            onClick={onDelete}
-          >
-            {note.deleted ? (
-              <TbTrashOff size="1rem" />
-            ) : (
-              <TbTrash size={'1rem'} />
-            )}
-          </Button>
-        </Col6>
-      </Row>
+      <NoteButtons note={note} />
     </Container>
   )
 }
