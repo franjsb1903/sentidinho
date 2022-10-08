@@ -54,4 +54,8 @@ export const GlobalStyle = createGlobalStyle`
     background: white; 
     border-radius: 10px;
   }
+
+  dialog::backdrop {
+    backdrop-filter: blur(10px)
+  }
 `

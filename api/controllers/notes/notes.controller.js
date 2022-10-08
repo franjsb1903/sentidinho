@@ -5,6 +5,7 @@ const {
   createNewNote,
   changeNoteImportance,
   changeDeleted,
+  deleteNote,
 } = require('../../business/notes/notes')
 
 const notesController = {
@@ -68,6 +69,19 @@ const notesController = {
       logger.error(msg)
       res.status(500).send({
         message: 'Error while trying to change deleted of note ${id}',
+      })
+    }
+  },
+  async deleteNoteForever(req, res) {
+    const { id } = req.params
+    try {
+      await deleteNote(id)
+      res.status(200).send({ status: 'OK' })
+    } catch (error) {
+      const msg = `[Error] while trying to delete note ${id}: ${error.message}`
+      logger.error(msg)
+      res.status(500).send({
+        message: 'Error while trying to delete note ${id}',
       })
     }
   },

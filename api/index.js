@@ -3,6 +3,7 @@ dotenv.config()
 
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const logger = require('./logger/logger')
 
 const router = require('./routes/index')
@@ -16,6 +17,10 @@ app.use((req, _, next) => {
   logger.info(req)
   next()
 })
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.resolve(__dirname, '../app/build')))
+}
 
 app.get('/status', async (_, res) => {
   res.status(200).send('I am alive!')

@@ -32,6 +32,9 @@ const notesDBQueries = {
       'run'
     )
   },
+  async deleteNote(id) {
+    await query('DELETE FROM notes WHERE id = ?', [id])
+  },
 }
 
 module.exports = notesDBQueries

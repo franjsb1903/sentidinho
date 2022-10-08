@@ -6,10 +6,14 @@ import { Dialog, DialogContent, DialogTitle } from '../dialog/Dialog'
 import FormNewNote from './FormNewNote'
 
 const AddNoteDialog = () => {
-  const [open, setOpen] = useState(false)
-
-  const openDialog = () => setOpen(true)
-  const closeDialog = () => setOpen(false)
+  const openDialog = () => {
+    const dialog: any = document.querySelector('#dialog-add-note')
+    dialog.showModal()
+  }
+  const closeDialog = () => {
+    const dialog: any = document.querySelector('#dialog-add-note')
+    dialog.close()
+  }
 
   return (
     <>
@@ -30,7 +34,7 @@ const AddNoteDialog = () => {
       >
         <FaPlus /> Añadir nueva nota
       </Button>
-      <Dialog open={open} width="500px" height="500px">
+      <Dialog id="dialog-add-note" width="500px" height="500px">
         <DialogTitle>
           <h2>Añadir nota</h2>
           <IconButton onClick={closeDialog}>

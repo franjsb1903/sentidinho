@@ -5,8 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "build": "npm run prettier && npm run lint && tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ./",
+    "prettier": "prettier --write ./",
+    "lint:fix": "eslint ./ --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",

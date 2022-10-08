@@ -27,10 +27,15 @@ const changeDeleted = id => {
   return notesDBQueries.changeDeletedStateNote(id)
 }
 
+const deleteNote = id => {
+  return notesDBQueries.deleteNote(id)
+}
+
 module.exports = {
   getAllNotes,
   getNoteById,
   createNewNote,
   changeNoteImportance,
   changeDeleted,
+  deleteNote,
 }
