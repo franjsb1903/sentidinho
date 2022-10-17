@@ -7,6 +7,7 @@ const {
   createNewNote,
   changeNoteImportance,
   changeDeleted,
+  deleteNote,
 } = require('../../business/notes/notes')
 
 jest.mock('../../db/notesDB', () => ({
@@ -15,6 +16,7 @@ jest.mock('../../db/notesDB', () => ({
   createNewNote: jest.fn(),
   changeNoteImportance: jest.fn(),
   changeDeletedStateNote: jest.fn(),
+  deleteNote: jest.fn(),
 }))
 Date.now = jest.fn(() => new Date('1-1-2022'))
 
@@ -48,8 +50,6 @@ describe('Test notes business', () => {
 
   describe('While call createNewNote method', () => {
     it('Should create the note', async () => {
-      notesDB.createNewNote.mockReturnValue({})
-
       await createNewNote(noteInsertMock)
 
       const finalNote = {
@@ -66,7 +66,6 @@ describe('Test notes business', () => {
   describe('While call changeNoteImportance method', () => {
     it('Should run correctly', async () => {
       const id = 1
-      notesDB.changeNoteImportance.mockReturnValue({})
 
       await changeNoteImportance(id)
 
@@ -77,11 +76,19 @@ describe('Test notes business', () => {
   describe('While call changeDeleted method', () => {
     it('Should run correctly', async () => {
       const id = 1
-      notesDB.changeDeletedStateNote.mockReturnValue({})
-
       await changeDeleted(id)
 
       expect(notesDB.changeDeletedStateNote).toHaveBeenCalledWith(id)
+    })
+  })
+
+  describe('While call deleteNote method', () => {
+    it('Should run correctly', async () => {
+      const id = 1
+
+      await deleteNote(id)
+
+      expect(notesDB.deleteNote).toHaveBeenCalledWith(id)
     })
   })
 })

@@ -51,7 +51,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-thumb {
-    background: white; 
+    background: ${({ theme }: { theme: any }) => theme.body}; 
     border-radius: 10px;
   }
 

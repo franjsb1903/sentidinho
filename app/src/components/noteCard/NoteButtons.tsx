@@ -3,7 +3,6 @@ import {
   TbExclamationMarkOff,
   TbTrash,
   TbTrashOff,
-  TbX,
 } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -14,10 +13,12 @@ import { INote } from '../../types/INote'
 import { Button } from '../button/Button'
 import DeleteNote from '../deleteNote/DeleteNote'
 import { Row, Col3 } from '../flex/Flex'
+import Progress from '../loading/Loading'
 
 const NoteButtons = ({ note }: { note: INote }) => {
-  const [changeImportance] = usePutChangeImportanceMutation()
-  const [deleteNote] = useDeleteNoteMutation()
+  const [changeImportance, { isLoading: isLoadingImportance }] =
+    usePutChangeImportanceMutation()
+  const [deleteNote, { isLoading: isLoadingDelete }] = useDeleteNoteMutation()
   const navigate = useNavigate()
 
   const onChangeImportance = () => {
@@ -54,7 +55,9 @@ const NoteButtons = ({ note }: { note: INote }) => {
           height="40px"
           onClick={onChangeImportance}
         >
-          {note.important ? (
+          {isLoadingImportance ? (
+            <Progress color="white" size="small" />
+          ) : note.important ? (
             <TbExclamationMarkOff size={'1.2rem'} fontWeight="bold" />
           ) : (
             <TbExclamationMark size={'1.2rem'} fontWeight="bold" />
@@ -69,7 +72,9 @@ const NoteButtons = ({ note }: { note: INote }) => {
           height="40px"
           onClick={onDelete}
         >
-          {note.deleted ? (
+          {isLoadingDelete ? (
+            <Progress color="white" size="small" />
+          ) : note.deleted ? (
             <TbTrashOff size="1rem" />
           ) : (
             <TbTrash size={'1rem'} />

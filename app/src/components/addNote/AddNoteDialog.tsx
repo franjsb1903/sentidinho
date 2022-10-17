@@ -40,7 +40,7 @@ const AddNoteDialog = () => {
       >
         <FaPlus color={isDark ? 'white' : 'black'} /> Añadir nueva nota
       </Button>
-      <Dialog id="dialog-add-note" width="500px" height="500px">
+      <Dialog id="dialog-add-note" width="500px" height="520px">
         <DialogTitle>
           <h2>Añadir nota</h2>
           <IconButton onClick={closeDialog}>

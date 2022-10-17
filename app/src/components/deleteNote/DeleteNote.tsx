@@ -56,7 +56,7 @@ const DeleteNote = ({ note }: { note: INote }) => {
       >
         <TbX size={'1rem'} />
       </Button>
-      <Dialog id="dialog-delete-note" width="800px" height="300px">
+      <Dialog id="dialog-delete-note" width="800px" height="320px">
         <DialogTitle>
           <h2>
             Borrar nota -{' '}
@@ -95,6 +95,7 @@ const DeleteNote = ({ note }: { note: INote }) => {
             style={{
               display: 'flex',
               justifyContent: 'center',
+              alignItems: 'center',
             }}
           >
             {isLoading ? <Progress color="white" size="small" /> : 'Eliminar'}
