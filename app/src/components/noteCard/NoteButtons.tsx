@@ -3,6 +3,7 @@ import {
   TbExclamationMarkOff,
   TbTrash,
   TbTrashOff,
+  TbX,
 } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
 import {
@@ -11,7 +12,8 @@ import {
 } from '../../redux/slices/notesAPI'
 import { INote } from '../../types/INote'
 import { Button } from '../button/Button'
-import { Row, Col6 } from '../flex/Flex'
+import DeleteNote from '../deleteNote/DeleteNote'
+import { Row, Col3 } from '../flex/Flex'
 
 const NoteButtons = ({ note }: { note: INote }) => {
   const [changeImportance] = usePutChangeImportanceMutation()
@@ -19,30 +21,32 @@ const NoteButtons = ({ note }: { note: INote }) => {
   const navigate = useNavigate()
 
   const onChangeImportance = () => {
-    changeImportance(note.id)
-    navigate(
-      note.deleted
-        ? '/deleted'
-        : note.important
-        ? '/no-important'
-        : '/important'
-    )
+    changeImportance(note.id).then(() => {
+      navigate(
+        note.deleted
+          ? '/deleted'
+          : note.important
+          ? '/no-important'
+          : '/important'
+      )
+    })
   }
 
   const onDelete = () => {
-    deleteNote(note.id)
-    navigate(
-      note.deleted
-        ? note.important
-          ? '/important'
-          : '/no-important'
-        : '/deleted'
-    )
+    deleteNote(note.id).then(() => {
+      navigate(
+        note.deleted
+          ? note.important
+            ? '/important'
+            : '/no-important'
+          : '/deleted'
+      )
+    })
   }
 
   return (
     <Row padding="10px">
-      <Col6>
+      <Col3>
         <Button
           bgcolor="#5799db"
           bradius="10px"
@@ -56,8 +60,8 @@ const NoteButtons = ({ note }: { note: INote }) => {
             <TbExclamationMark size={'1.2rem'} fontWeight="bold" />
           )}
         </Button>
-      </Col6>
-      <Col6>
+      </Col3>
+      <Col3>
         <Button
           bgcolor={note.deleted ? 'green' : '#d94a26'}
           bradius="10px"
@@ -71,7 +75,10 @@ const NoteButtons = ({ note }: { note: INote }) => {
             <TbTrash size={'1rem'} />
           )}
         </Button>
-      </Col6>
+      </Col3>
+      <Col3>
+        <DeleteNote note={note} />
+      </Col3>
     </Row>
   )
 }

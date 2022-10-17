@@ -35,6 +35,13 @@ export const notesApi = createApi({
       }),
       invalidatesTags: ['note-mutation' as never],
     }),
+    deleteNoteForever: builder.mutation<{}, number>({
+      query: id => ({
+        url: `${import.meta.env.VITE_DELETE_NOTE_FOREVER_PATH}/${id}`,
+        method: 'DELETE',
+      }),
+      invalidatesTags: ['note-mutation' as never],
+    }),
   }),
 })
 
@@ -43,4 +50,5 @@ export const {
   usePostNewNoteMutation,
   usePutChangeImportanceMutation,
   useDeleteNoteMutation,
+  useDeleteNoteForeverMutation,
 } = notesApi

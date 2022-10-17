@@ -25,3 +25,10 @@ export const DialogTitle = styled.div`
 export const DialogContent = styled.div`
   padding: 2rem;
 `
+
+export const DialogActions = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 2rem;
+`

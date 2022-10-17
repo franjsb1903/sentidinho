@@ -30,6 +30,14 @@ export const Column = styled.div`
   gap: 20px;
 `
 
+export const Col3 = styled.div`
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: ${({ direction }: { direction?: string }) =>
+    direction || 'row'};
+`
+
 export const Col6 = styled.div`
   width: 50%;
   display: flex;

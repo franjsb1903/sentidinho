@@ -8,6 +8,7 @@ interface ImportMetaEnv {
   readonly VITE_CREATE_NEW_NOTE_PATH: string
   readonly VITE_PUT_IMPORTANCE_PATH: string
   readonly VITE_DELETE_NOTE_PATH: string
+  readonly VITE_DELETE_NOTE_FOREVER_PATH: string
 }
 
 interface ImportMeta {
