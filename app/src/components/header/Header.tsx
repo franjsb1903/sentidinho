@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import './styles.css'
+import ToggleDarkMode from '../toggleDarkMode/ToggleDarkMode'
 
 const Container = styled.header`
   color: ${({ theme }) => theme.text};
@@ -107,6 +108,7 @@ const Header = () => {
               Borradas
             </LinkHeader>
           </Item>
+          <ToggleDarkMode closeMenu={closeMenu} />
         </ul>
 
         <NavIconContainer href="#nav" className="nav__hamburguer">

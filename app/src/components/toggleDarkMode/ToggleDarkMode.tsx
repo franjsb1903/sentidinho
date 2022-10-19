@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import sun from '../../../public/assets/sun.svg'
-import Moon from './Moon'
-import Sun from './Sun'
+import { BsFillMoonFill, BsSunFill } from 'react-icons/bs'
+import { useAppSelector, useAppDispatch } from '../../redux/store'
+import { changeMode } from '../../redux/slices/darkmode'
 
 const Input = styled.input`
   width: 0;
@@ -16,14 +16,6 @@ const Input = styled.input`
     left: 65px;
     transform: translateX(-100%);
     background: linear-gradient(180deg, #777, #3a3a3a);
-  }
-
-  &:checked + label svg.sun {
-    fill: #eee;
-  }
-
-  &:checked + label svg.moon {
-    fill: #fff;
   }
 `
 
@@ -56,45 +48,49 @@ const Label = styled.label`
     width: 40px;
   }
 
-  & svg {
+  & .icon {
     position: absolute;
     width: 20px;
-    top: 5px;
+    top: 7px;
     z-index: 100;
-  }
-
-  & svg.sun {
-    left: 5px;
-    fill: #202020;
+    left: 44px;
     transition: 0.3s;
   }
 
-  & svg.moon {
+  & .moon {
+    left: 5px;
+    transition: 0.3s;
+  }
+
+  & .sun {
     left: 44px;
-    fill: #7e7e7e;
     transition: 0.3s;
   }
 `
 
-const ToggleDarkMode = ({
-  darkmode,
-  setDarkmode,
-}: {
-  darkmode: boolean
-  setDarkmode: (value: boolean) => void
-}) => (
-  <>
-    <Input
-      type="checkbox"
-      checked={darkmode}
-      onClick={() => setDarkmode(!darkmode)}
-      id="darkmode-toggle"
-    />
-    <Label htmlFor="darkmode-toggle">
-      <Sun />
-      <Moon />
-    </Label>
-  </>
-)
+const ToggleDarkMode = ({ closeMenu }: { closeMenu: () => void }) => {
+  const darkmode = useAppSelector(state => state.darkmode.darkmode)
+  const dispatch = useAppDispatch()
+  return (
+    <>
+      <Input
+        type="checkbox"
+        checked={darkmode}
+        onChange={() => {
+          closeMenu()
+          dispatch(changeMode())
+        }}
+        id="darkmode-toggle"
+      />
+      <Label htmlFor="darkmode-toggle">
+        {darkmode ? (
+          <BsFillMoonFill color="yellow" className="icon moon" />
+        ) : (
+          <BsSunFill color="black" className="icon sun" />
+        )}
+      </Label>
+    </>
+  )
+}
 
 export default ToggleDarkMode

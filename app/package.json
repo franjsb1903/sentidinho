@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run prettier && npm run lint && tsc && vite build",
+    "build": "npm run prettier && tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint ./",
+    "lint": "eslint src --ext .tsx",
     "prettier": "prettier --write ./",
     "lint:fix": "eslint ./ --fix"
   },
