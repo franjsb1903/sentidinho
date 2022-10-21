@@ -9,8 +9,10 @@
   "description": "Aplicación de notas con parte backend y parte frontend en monorepo",
   "main": "index.js",
   "scripts": {
-    "dev:api": "npm run build -w app && npm run dev -w api",
-    "dev:app": "npm run dev -w app"
+    "dev:api": "npm run dev -w api",
+    "dev:app": "npm run dev -w app",
+    "dev": "npm run build -w app && npm run dev -w api",
+    "start": "npm run build -w app && npm run start -w api"
   },
   "repository": {
     "type": "git",
@@ -36,6 +38,7 @@
   },
   "dependencies": {
     "jest": "^29.1.2",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "redux-persist": "^6.0.0"
   }
 }
