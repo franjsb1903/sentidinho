@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run prettier && tsc && vite build",
+    "build": "npm run prettier && npm run lint && tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint src --ext .tsx",
+    "lint": "eslint ./ --ext ts,tsx",
     "prettier": "prettier --write ./",
-    "lint:fix": "eslint ./ --fix"
+    "lint:fix": "eslint ./ --fix --ext ts,tsx"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
+    "eslint-plugin-react": "^7.31.10",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
