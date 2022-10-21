@@ -3,11 +3,15 @@ dotenv.config()
 
 const express = require('express')
 const cors = require('cors')
+const path = require('path')
 const logger = require('./logger/logger')
 
 const router = require('./routes/index')
 
 const app = express()
+
+app.use(express.static(path.join(__dirname, '..', 'app', 'build')))
+app.use(express.static('public'))
 
 app.use(cors())
 app.use(express.json())
