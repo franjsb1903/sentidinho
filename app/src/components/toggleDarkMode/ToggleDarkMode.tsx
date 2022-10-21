@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { BsFillMoonFill, BsSunFill } from 'react-icons/bs'
-import { useAppSelector, useAppDispatch } from '../../redux/store'
+import { useSelector, useDispatch } from '../../redux/store'
 import { changeMode } from '../../redux/slices/darkmode'
 
 const Input = styled.input`
@@ -69,8 +69,8 @@ const Label = styled.label`
 `
 
 const ToggleDarkMode = ({ closeMenu }: { closeMenu: () => void }) => {
-  const darkmode = useAppSelector(state => state.darkmode.darkmode)
-  const dispatch = useAppDispatch()
+  const darkmode = useSelector(state => state.darkmode.darkmode)
+  const dispatch = useDispatch()
   return (
     <>
       <Input
