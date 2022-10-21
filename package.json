@@ -9,7 +9,8 @@
   "description": "Aplicación de notas con parte backend y parte frontend en monorepo",
   "main": "index.js",
   "scripts": {
-    "dev:server": "npm run dev --workspace=api"
+    "dev:api": "npm run build -w app && npm run dev -w api",
+    "dev:app": "npm run dev -w app"
   },
   "repository": {
     "type": "git",
@@ -23,13 +24,18 @@
   },
   "homepage": "https://github.com/franjsb1903/sentidinho#readme",
   "devDependencies": {
+    "@types/jest": "^29.1.1",
     "eslint": "8.22.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-config-standard-with-typescript": "22.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-n": "15.2.5",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.7.1",
-    "eslint-plugin-promise": "6.0.0"
+    "eslint-plugin-promise": "6.0.0",
+    "prettier": "2.7.1"
+  },
+  "dependencies": {
+    "jest": "^29.1.2",
+    "moment": "^2.29.4"
   }
 }
