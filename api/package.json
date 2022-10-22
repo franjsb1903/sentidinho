@@ -5,11 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./index.js",
-    "start": "npm run prettier && npm run lint && node ./index.js",
-    "test": "jest --coverage",
-    "lint": "eslint ./",
-    "prettier": "prettier --write ./",
-    "lint:fix": "eslint ./ --fix"
+    "start": "npm run test && node ./index.js",
+    "test": "jest --coverage"
   },
   "keywords": [],
   "author": "",

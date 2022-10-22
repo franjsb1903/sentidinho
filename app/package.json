@@ -6,10 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "npm run prettier && npm run lint && tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint ./ --ext ts,tsx",
-    "prettier": "prettier --write ./",
-    "lint:fix": "eslint ./ --fix --ext ts,tsx"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
