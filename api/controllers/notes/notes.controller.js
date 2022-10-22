@@ -55,7 +55,7 @@ const notesController = {
       const msg = `[Error] while trying to change importance of note ${id}: ${error.message}`
       logger.error(msg)
       res.status(500).send({
-        message: 'Error while trying to change importance of note ${id}',
+        message: `Error while trying to change importance of note ${id}`,
       })
     }
   },
@@ -68,7 +68,7 @@ const notesController = {
       const msg = `[Error] while trying to change deleted of note ${id}: ${error.message}`
       logger.error(msg)
       res.status(500).send({
-        message: 'Error while trying to change deleted of note ${id}',
+        message: `Error while trying to change deleted of note ${id}`,
       })
     }
   },
@@ -81,7 +81,7 @@ const notesController = {
       const msg = `[Error] while trying to delete note ${id}: ${error.message}`
       logger.error(msg)
       res.status(500).send({
-        message: 'Error while trying to delete note ${id}',
+        message: `Error while trying to delete note ${id}`,
       })
     }
   },
